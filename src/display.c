@@ -1,8 +1,13 @@
 #include "display.h"
 
 
+// output dislpay method 
 DisplayMethod displayMethod = UPPER_HALF_SLAB;
 
+/* TODO
+    // whether to blur the background when scale is greater than 1
+    bool blueWithScale = true;
+*/
 
 // prints a 2d array of rgb values.
 // in the following format:
@@ -16,15 +21,19 @@ void display(uint8_t* data, int width, int height, int scale, int channels) {
             if (displayMethod == UPPER_HALF_SLAB) {
                 color(*data_ptr, *(data_ptr+1), *(data_ptr+2), FOREGROUND);
 
-                data_ptr = data + ((y+1) * width + x) * channels;
-                color(*data_ptr, *(data_ptr+1), *(data_ptr+2), BACKGROUND);
-
+                if (y < height - 1) {
+                    data_ptr = data + ((y+1) * width + x) * channels;
+                    color(*data_ptr, *(data_ptr+1), *(data_ptr+2), BACKGROUND);
+                }
+                
                 printf("▀");
             } else if (displayMethod == LOWER_HALF_SLAB) {
                 color(*data_ptr, *(data_ptr+1), *(data_ptr+2), BACKGROUND);
-
-                data_ptr = data + ((y+1) * width + x) * channels;
-                color(*data_ptr, *(data_ptr+1), *(data_ptr+2), FOREGROUND);
+                
+                if (y < height - 1) {
+                    data_ptr = data + ((y+1) * width + x) * channels;
+                    color(*data_ptr, *(data_ptr+1), *(data_ptr+2), FOREGROUND);
+                }
                 
                 printf("▄");
             } else {
