@@ -17,10 +17,29 @@ dimg {FILE}
 > This uses the half slab character `▀` `▄` which most teminals print well. depending on your terminal there may be some irregularities in the output
 
 ## Installation
-**Step 1** - Download files/clone repo
+**Step 1** - Clone repo
+```
+git clone https://github.com/stratisco/Terminal-Display-Image.git
+```
 
-**Step 2** - Run `make` command to compile c code
+**Step 2** - Navigate to base directory
+```
+cd Terminal-Display-Image
+```
 
-**Step 3** - Test the program with `./dimg images/hd.jpg`
+**Step 3** - Compile c code
+```
+make
+```
 
-**Step 4** *(Optional)* - Set command alias with `alias dimg="/path/to/src/dimg"`
+**Step 4** *(Optional)* - Test the program
+```
+./dimg images/hd.jpg
+```
+
+**Step 5** *(Optional)* - Set command alias
+```
+echo "alias dimg='/path/to/Terminal-Display-Image/dimg'" >> ~/.bashrc
+source ~/.bashrc
+```
+
