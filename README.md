@@ -1,9 +1,9 @@
 <p align="center">
   <img 
       src="images/post_example_small.png" 
-      alt="example_low_res" 
-      width="30%" 
-      height="30%"
+      alt="front_example_image" 
+      width="400" 
+      height="400"
       decoding="async"
       fetchpriority="high"
   />
