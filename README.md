@@ -1,12 +1,29 @@
-# Terminal Display Image
-Allows you to view images from the terminal *(no gui needed)*
+<p align="center">
+  <img 
+      src="images/post_example_small.png" 
+      alt="example_low_res" 
+      width="30%" 
+      height="30%"
+      decoding="async"
+      fetchpriority="high"
+  />
+</p>
 
-> [!NOTE]
-> This uses true color to set colors. Most modern terminals impliment this however some older ones do not
+# Terminal Display Image
+Prints images to the terminal using coloured ascii characters. This is the easiest way to view images from a terminal only envoriment *(no gui needed)*
+
+> [!IMPORTANT]
+> This program uses 24-bit *true color* to change terminal colors. This feature is supported by most modern terminals. For more info check out [this repo](https://github.com/termstandard/colors)
 
 ## Features
-- Prints images to terminal as coloured ascii 
-- Auto resizes to best fit terminal
+- Allows you to view images in terminal
+- Auto scales to best fit terminal
+- Has different display methods to further compatibility
+
+| Original Image | Default output | Lower width output |
+| :-------: | :------: | :------: |
+| <img src="images/example.png" width="200" height="200"/> | <img src="images/post_example_normal.png" width="200" height="200"/> | <img src="images/post_example_small.png" width="200" height="200"/> |
+
 
 ## Usage
 ```
@@ -17,7 +34,6 @@ Display options:
   -h, --max-height #   Maximum height of the outputed image in character spaces. This supports % values
       --upper-slab     Print pixels using upper half slab '▀'
       --lower-slab     Print pixels using lower half slab '▄'
-      --lower-slab     Print pixels using lower half slab '▄'
       --two-space      Print pixels using two spaces '  ' (this is more compatible but reduces image resolution 2x) 
 
 Misc options:
@@ -26,7 +42,7 @@ Misc options:
 
 ## Examples
 ```
-# print images/cat with 50% of the terminal width
+# print images/cat.png with 50% of the terminal width
 dimg images/cat.png -w 50%
 
 # print dog.png with the two space display method
@@ -57,7 +73,7 @@ make
 
 **Step 4** *(Optional)* - Test the program
 ```
-./dimg images/hd.jpg
+./dimg images/example.jpg
 ```
 
 **Step 5** *(Optional)* - Set command alias
