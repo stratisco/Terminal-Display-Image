@@ -22,7 +22,7 @@ Prints images to the terminal using coloured ascii characters. This is the easie
 
 | Original Image | Default output | Lower width output |
 | :-------: | :------: | :------: |
-| <img src="images/example.png" width="200" height="200"/> | <img src="images/post_example_normal.png" width="200" height="200"/> | <img src="images/post_example_small.png" width="200" height="200"/> |
+| <img src="images/example.png" width="400" height="400"/> | <img src="images/post_example_normal.png" width="400" height="400"/> | <img src="images/post_example_small.png" width="400" height="400"/> |
 
 
 ## Usage
