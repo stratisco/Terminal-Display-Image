@@ -15,5 +15,7 @@ typedef enum DisplayMethod {
     TWO_SPACE_PIXEL // "  "
 } DisplayMethod;
 
+extern DisplayMethod displayMethod;
+
 
 #endif

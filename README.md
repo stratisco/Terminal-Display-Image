@@ -10,7 +10,30 @@ Allows you to view images from the terminal *(no gui needed)*
 
 ## Usage
 ```
-dimg {FILE}
+Usage: dimg [FILE] [DISPLAY OPTIONS]
+
+Display options:
+  -w, --max-width #    Maximum width of the outputed image in character spaces. This supports % values
+  -h, --max-height #   Maximum height of the outputed image in character spaces. This supports % values
+      --upper-slab     Print pixels using upper half slab '▀'
+      --lower-slab     Print pixels using lower half slab '▄'
+      --lower-slab     Print pixels using lower half slab '▄'
+      --two-space      Print pixels using two spaces '  ' (this is more compatible but reduces image resolution 2x) 
+
+Misc options:
+      --help           Prints this message
+```
+
+## Examples
+```
+# print images/cat with 50% of the terminal width
+dimg images/cat.png -w 50%
+
+# print dog.png with the two space display method
+dimg dog.png --two-space
+
+# print /img/image.jpg with a height of 10 lines 
+dimg /img/image.jpg -h 10
 ```
 
 > [!NOTE]

@@ -13,6 +13,7 @@
 
 #include "colors.h"
 #include "display.h"
+#include "config.h"
 
 
 #endif
