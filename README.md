@@ -53,7 +53,7 @@ dimg /img/image.jpg -h 10
 ```
 
 > [!NOTE]
-> This uses the half slab character `▀` `▄` which most teminals print well. depending on your terminal there may be some irregularities in the output
+> To fit more pixels in the screen this uses half slab characters `▀` `▄`. Depending on what font style yout terminal uses you may want to revert to the two spaces method with `--two-space`
 
 ## Installation
 **Step 1** - Clone repo
