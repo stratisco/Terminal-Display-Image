@@ -7,7 +7,7 @@
 #include <stdint.h>
 #include "colors.h"
 
-void display(uint8_t* data, int width, int height, int scale, int channels);
+void display(uint8_t* data, int width, int height, int scale, int channels, int padding);
 
 typedef enum DisplayMethod {
     UPPER_HALF_SLAB, // "▀"

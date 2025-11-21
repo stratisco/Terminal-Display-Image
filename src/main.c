@@ -4,16 +4,17 @@
 char* short_usage_msg = "Usage: dimg [FILE] [DISPLAY OPTIONS]\nTry dimg --help for more info\n";
 char* long_usage_msg = "Usage: dimg [FILE] [DISPLAY OPTIONS]\n"
 "\nDisplay options:\n"
-"  -w, --max-width #    Maximum width of the outputed image in character spaces. This supports % values\n"
-"  -h, --max-height #   Maximum height of the outputed image in character spaces. This supports % values\n"
+"  -w, --max-width #    Maximum width of output in character spaces. Either numbers of percentages\n"
+"  -h, --max-height #   Maximum height of output in character spaces. Either numbers of percentages\n"
+"  -p, --padding        Spacing on the sides of the image\n"
 "      --upper-slab     Print pixels using upper half slab '▀'\n"
 "      --lower-slab     Print pixels using lower half slab '▄'\n"
-"      --two-space      Print pixels using two spaces '  ' (this is more compatible but reduces image resolution 2x) \n"
+"      --two-space      Print pixels using two spaces '  ' (this is more compatible but reduces image resolution 2x)\n"
 "\nMisc options:\n"
 "      --help           Prints this message\n"
 "\nExamples:\n"
 "  dimg images/cat.png -w 50%\n"
-"  dimg dog.png --two-space\n"
+"  dimg dog.png --two-space -h 10\n"
 "\nFor more information visit the github:\n"
 "  <https://github.com/stratisco/Terminal-Display-Image>\n"
 ;
@@ -51,6 +52,7 @@ int main(int argc, char* argv[]) {
     int output_width = terminal.ws_col * DEFAULT_WIDTH;
     int output_height = terminal.ws_row;
     bool height_set = false;
+    int padding = 0;
 
     
 
@@ -90,6 +92,16 @@ int main(int argc, char* argv[]) {
             height_set = true;
 
             i += 1;
+        } else if (strcmp(argv[i], "-p") == 0 || strcmp(argv[i], "--padding") == 0) {
+            if (i + 1 >= argc) {
+                printf("Error - argument padding needs a value set\n");
+                printf("%s", short_usage_msg);
+                return 0;
+            }
+
+            sscanf(argv[i+1], "%d", &padding);
+
+            i += 1;
         } else if (strcmp(argv[i], "--upper-slab") == 0) {
             displayMethod = UPPER_HALF_SLAB;
         
@@ -109,9 +121,10 @@ int main(int argc, char* argv[]) {
         }
     }
 
+    
 
-    int w_scale = img_width / output_width + 1;
-    int h_scale = img_height / output_height + 1;
+    int w_scale = img_width / (output_width - padding*2) + 1;
+    int h_scale = img_height / (output_height - padding*2) + 1;
     if (displayMethod == UPPER_HALF_SLAB || displayMethod == LOWER_HALF_SLAB) {
         h_scale /= 2;
     }
@@ -128,7 +141,7 @@ int main(int argc, char* argv[]) {
     
     // printf("Image printing: Width = %d, Height = %d, Channels = %d, Scale = %d\n", img_width, img_height, channels, scale);
     
-    display(img_data, img_width, img_height, scale, channels);
+    display(img_data, img_width, img_height, scale, channels, padding);
     
     stbi_image_free(img_data);
 

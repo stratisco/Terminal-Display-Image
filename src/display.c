@@ -12,8 +12,15 @@ DisplayMethod displayMethod = UPPER_HALF_SLAB;
 // prints a 2d array of rgb values.
 // in the following format:
 //    r1, g1, b1, r2, g2, b2...
-void display(uint8_t* data, int width, int height, int scale, int channels) {
+void display(uint8_t* data, int width, int height, int scale, int channels, int padding) {
+    for (int p=0; p < padding; p++) {
+        printf("\n");
+    }
+
     for (int y = 0; y < height ;y += scale) {
+        for (int p=0; p < padding*2; p++) {
+            printf(" ");
+        }
         for (int x = 0; x < width; x += scale) {
             
             uint8_t* data_ptr = data + (y * width + x) * channels;
@@ -45,9 +52,13 @@ void display(uint8_t* data, int width, int height, int scale, int channels) {
         }
         color_reset();
         printf("\n");
-
+        
         if (displayMethod == UPPER_HALF_SLAB || displayMethod == LOWER_HALF_SLAB) {
             y += scale;
         }
+    }
+
+    for (int p=0; p < padding; p++) {
+        printf("\n");
     }
 }
