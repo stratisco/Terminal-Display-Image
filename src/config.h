@@ -2,8 +2,8 @@
 #define CONFIG_H
 
 
-// default 80% terminal width
-#define DEFAULT_WIDTH 0.8
+// default 90% terminal width
+#define DEFAULT_WIDTH 0.9
 
 
 #endif
