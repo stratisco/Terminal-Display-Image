@@ -30,11 +30,12 @@ Prints images to the terminal using coloured ascii characters. This is the easie
 Usage: dimg [FILE] [DISPLAY OPTIONS]
 
 Display options:
-  -w, --max-width #    Maximum width of the outputed image in character spaces. This supports % values
-  -h, --max-height #   Maximum height of the outputed image in character spaces. This supports % values
+  -w, --max-width #    Maximum width of output in character spaces. Either numbers of percentages
+  -h, --max-height #   Maximum height of output in character spaces. Either numbers of percentages
+  -p, --padding        Spacing on the sides of the image
       --upper-slab     Print pixels using upper half slab '▀'
       --lower-slab     Print pixels using lower half slab '▄'
-      --two-space      Print pixels using two spaces '  ' (this is more compatible but reduces image resolution 2x) 
+      --two-space      Print pixels using two spaces '  ' (this is more compatible but reduces image resolution 2x)
 
 Misc options:
       --help           Prints this message
