@@ -29,7 +29,7 @@ Prints images to the terminal using coloured ascii characters. This is the easie
 ```
 Usage: dimg [FILE] [DISPLAY OPTIONS]
 
-Display options:
+Output options:
   -w, --max-width #    Maximum width of output in character spaces. Either numbers of percentages
   -h, --max-height #   Maximum height of output in character spaces. Either numbers of percentages
   -p, --padding #      Spacing on the sides of the image
@@ -37,7 +37,8 @@ Display options:
       --lower-slab     Print pixels using lower half slab '▄'
       --two-space      Print pixels using two spaces '  ' (this is more compatible but reduces image resolution 2x)
 
-Misc options:
+Miscellaneous options:
+  -v, --version        Get dimg version info
       --help           Prints this message
 ```
 
