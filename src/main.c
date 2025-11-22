@@ -16,7 +16,7 @@ char* long_usage_msg = "Usage: dimg [FILE] [DISPLAY OPTIONS]\n"
 "\nFor more information visit the github:\n"
 "  <https://github.com/stratisco/Terminal-Display-Image>\n"
 ;
-char* version_msg = "Dimg version " DIMG_VERSION "\nWritten by Ryan Cowan\n  <https://github.com/stratisco/Terminal-Display-Image>";
+char* version_msg = "Dimg version " DIMG_VERSION "\nWritten by Ryan Cowan\n <https://github.com/stratisco/Terminal-Display-Image>\n";
 
 
 
@@ -30,6 +30,9 @@ int main(int argc, char* argv[]) {
 
     if (strcmp(argv[1], "--help") == 0) {
         printf("%s", long_usage_msg);
+        return 0;
+    } else if (strcmp(argv[1], "-v") == 0 || strcmp(argv[1], "--version") == 0) {
+        printf("%s", version_msg);
         return 0;
     }
 
