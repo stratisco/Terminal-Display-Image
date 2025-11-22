@@ -17,9 +17,13 @@ $(OUTPUT): $(OBJS)
 %.o: %.c
 	$(CC) $(CFLAGS) -c $< -o $@
 
-clean:
+
+clean-all:
 	rm -f $(OBJS) $(OUTPUT)
 
+clean:
+	rm -f $(OBJS)
+
 fresh:
-	make clean
+	make clean-all
 	make
