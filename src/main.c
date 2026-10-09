@@ -1,23 +1,22 @@
 #include "main.h"
 
 
-char* short_usage_msg = "Usage: dimg [FILE] [DISPLAY OPTIONS]\nTry dimg --help for more info\n";
+char* short_usage_msg = "Usage: dimg [FILE] [DISPLAY OPTIONS]\nTry `dimg --help` for more info\n";
 char* long_usage_msg = "Usage: dimg [FILE] [DISPLAY OPTIONS]\n"
-"\nDisplay options:\n"
+"\nOutput options:\n"
 "  -w, --max-width #    Maximum width of output in character spaces. Either numbers of percentages\n"
 "  -h, --max-height #   Maximum height of output in character spaces. Either numbers of percentages\n"
 "  -p, --padding #      Spacing on the sides of the image\n"
 "      --upper-slab     Print pixels using upper half slab '▀'\n"
 "      --lower-slab     Print pixels using lower half slab '▄'\n"
 "      --two-space      Print pixels using two spaces '  ' (this is more compatible but reduces image resolution 2x)\n"
-"\nMisc options:\n"
+"\nMiscellaneous options:\n"
+"  -v, --version        Get dimg version info\n"
 "      --help           Prints this message\n"
-"\nExamples:\n"
-"  dimg images/cat.png -w 50%\n"
-"  dimg dog.png --two-space -h 10\n"
 "\nFor more information visit the github:\n"
 "  <https://github.com/stratisco/Terminal-Display-Image>\n"
 ;
+char* version_msg = "Dimg version " DIMG_VERSION "\nWritten by Ryan Cowan\n <https://github.com/stratisco/Terminal-Display-Image>\n";
 
 
 
@@ -31,6 +30,9 @@ int main(int argc, char* argv[]) {
 
     if (strcmp(argv[1], "--help") == 0) {
         printf("%s", long_usage_msg);
+        return 0;
+    } else if (strcmp(argv[1], "-v") == 0 || strcmp(argv[1], "--version") == 0) {
+        printf("%s", version_msg);
         return 0;
     }
 
@@ -111,6 +113,9 @@ int main(int argc, char* argv[]) {
         } else if (strcmp(argv[i], "--two-space") == 0) {
             displayMethod = TWO_SPACE_PIXEL;
 
+        } else if (strcmp(argv[i], "-v") == 0 || strcmp(argv[i], "--version") == 0) {
+            printf("%s", version_msg);
+            return 0;
         } else if (strcmp(argv[i], "--help") == 0) {
             printf("%s", long_usage_msg);
             return 0;

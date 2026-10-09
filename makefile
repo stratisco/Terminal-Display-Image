@@ -1,25 +1,27 @@
 CC = gcc
-CFLAGS = -Wall -pedantic
+CFLAGS = -Wall -pedantic -MMD -MP
+
+BUILD = .build
 OUTPUT = dimg
 
-ifndef VERBOSE
-MAKEFLAGS += --no-print-directory
-endif
-
 SRCS = $(wildcard src/*.c)
-OBJS = $(SRCS:.c=.o)
+OBJS = $(patsubst src/%.c,$(BUILD)/%.o,$(SRCS))
+DEPS = $(OBJS:.o=.d)
 
 all: $(OUTPUT)
 
 $(OUTPUT): $(OBJS)
-	$(CC) $(CFLAGS) -o ./$(OUTPUT) $(OBJS) -lm
+	$(CC) $(OBJS) -o $@ -lm
 
-%.o: %.c
+$(BUILD):
+	mkdir -p $@
+
+$(BUILD)/%.o: src/%.c | $(BUILD)
 	$(CC) $(CFLAGS) -c $< -o $@
 
-clean:
-	rm -f $(OBJS) $(OUTPUT)
+-include $(DEPS)
 
-fresh:
-	make clean
-	make
+clean:
+	rm -rf $(BUILD) $(OUTPUT)
+
+.PHONY: all clean
