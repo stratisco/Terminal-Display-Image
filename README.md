@@ -9,11 +9,13 @@
   />
 </p>
 
+
 # Terminal Display Image
 Prints images to the terminal using coloured ascii characters. This is the easiest way to view images from a terminal only envoriment *(no gui needed)*
 
 > [!IMPORTANT]
 > This program uses 24-bit *true color* to change terminal colors. This feature is supported by most modern terminals. For more info check out [this repo](https://github.com/termstandard/colors)
+
 
 ## Features
 - Allows you to view images in terminal
@@ -42,6 +44,7 @@ Miscellaneous options:
       --help           Prints this message
 ```
 
+
 ## Examples
 ```
 # print images/cat.png with 50% of the terminal width
@@ -56,6 +59,7 @@ dimg /img/image.jpg -h 10
 
 > [!NOTE]
 > To fit more pixels in the screen this uses half slab characters `▀` `▄`. Depending on what font style yout terminal uses you may want to revert to the two spaces method with `--two-space`
+
 
 ## Installation
 **Step 1** - Clone repo
@@ -75,7 +79,7 @@ make
 
 **Step 4** *(Optional)* - Test the program
 ```
-./dimg images/example.jpg
+./dimg images/example.png
 ```
 
 **Step 5** *(Optional)* - Set command alias
@@ -84,3 +88,6 @@ echo "alias dimg='/path/to/Terminal-Display-Image/dimg'" >> ~/.bashrc
 source ~/.bashrc
 ```
 
+## Development
+
+Compile files with `make` and clean compiled files with `make clean`
