@@ -4,7 +4,7 @@
 
 
 // Version
-#define DIMG_VERSION "0.1"
+#define DIMG_VERSION "1.0"
 
 
 // default 90% terminal width
